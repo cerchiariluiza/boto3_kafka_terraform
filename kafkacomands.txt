@@ -1,0 +1,27 @@
+1 baixa
+2 variaveis
+3 cria duas pastas
+pega o server
+log.dirs=C:/kafka/data/kafka
+
+rodar  zookeeper-server-start.bat C:\kafka\config\zookeeper.properties
+
+kafka-server-start.bat  zookeeper-server-start.bat C:\kafka\config\server.properties
+
+kafka-topics --bootstrap-server localhost:9092 --list
+
+kafka-topics --bootstrap-server localhost:9092 --create --topic teste
+PS C:\Users\Luiza Cerchiari> kafka-console-producer --broker-list localhost:9092 --topic teste
+>mensagem1
+>mensagem2
+>mensagem3
+>mensagem4
+>
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic teste
+kafka-console-consumer --bootstrap-server localhost:9092 --topic teste --from-beginning
+ kafka-console-consumer --bootstrap-server localhost:9092 --topic testep --group grupo1   (balance)
+ kafka-topics --bootstrap-server localhost:9092 --topic teste --describe
+
+kafka-console-producer --broker-list localhost:9092 --topic teste --property "parse.key=true" --property "key.separator=,"
+kafka-console-consumer --bootstrap-server localhost:9092 --topic teste --property "print.key=true" --property "key.separator=,"
